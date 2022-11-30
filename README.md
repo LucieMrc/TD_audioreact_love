@@ -1,4 +1,4 @@
-# 🚧🚧🚧 TD_audioreact_love 🚧🚧🚧
+# TD_audioreact_love
 
 **Ou comment générer des visuels audio-réactifs sur TouchDesigner pour faire des dingz.**
 
