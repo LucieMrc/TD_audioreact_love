@@ -68,7 +68,7 @@ On pourrait cocher également "Sortie Intégrée" dans le périphérique à sort
  *Le piano de l'intro de "Tout Le Monde" de Neniu*
 
  ![screen de Touch](./images/gif2.gif)
- *Le début de "I'm Not In Love" de 10cc, où on voit bien la basse en jaune qui revient à gauche*
+ *Le début de "I'm Not In Love" de 10cc, où on voit la basse en jaune qui revient à gauche*
 
  ![screen de Touch](./images/gif3.gif)
  *Le moment où le son est spatialisé et passe d'un coté à l'autre dans "Ridin" de Cordon; où on voit bien les fréquences devenir vertes puis rouges puis vertes*
