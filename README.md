@@ -63,7 +63,7 @@ On pourrait cocher également "Sortie Intégrée" dans le périphérique à sort
 
  ![screen de Touch](./images/screen7.png)
 
- On a ainsi une image où a
+ On a ainsi une image de base avec les fréquences en couleurs en fonction de la stéréo, que l'on peux ensuite continuer à travailler.
  ![screen de Touch](./images/gif1.gif)
  *Le piano de l'intro de "Tout Le Monde" de Neniu*
 
