@@ -1,74 +1,79 @@
 # TD_audioreact_love
 
-**Ou comment générer des visuels audio-réactifs sur TouchDesigner pour faire des dingz.**
 
-Inspiré des tutoriels de [Bileam Tschepe](https://www.youtube.com/@elekktronaut) et [PPPANIK](https://www.youtube.com/@pppanik2040).
+**On how to generative audio-reactive visuals with TouchDesigner.**
 
-## Setup audio-réactif
+Inspired by tutorials from [Bileam Tschepe](https://www.youtube.com/@elekktronaut) and [PPPANIK](https://www.youtube.com/@pppanik2040).
 
-On peux soit ouvrir un fichier son avec un CHOP `Audio File In`, ou écouter le son venant du micro de l'ordinateur avec `Audio Device In`.
+## Audio-reactive setup
 
-Si on veux écouter du son depuis youtube ou spotify ou autre, il faut installer un logiciel permettant de faire un câble audio virtuel pour que le son sorte dans TouchDesigner au lieu de sortir dans les hauts-parleurs.
+We can open a sound file with an `Audio File In` CHOP, or listen to the sound from the mic of your computer with an `Audio Device In` CHOP.
 
-### Câble audio virtuel sous mac
-Perso, j'utilise [SoundFlower](https://soundflower.fr.softonic.com/mac) sur Mac.
+If we want to listen to music from Youtube or Spotify or whatever, we need to install another software that will allow us to create a virtual audio cable in the computer, so the sound can go in TouchDesigner instead of out of the speakers.
 
-Ouvrir l'application `Configuration audio et MIDI`, qui se trouve dans le dossier Application > Utilitaires.
+### Virtual audio cable audio in mac OS
+I personally use [SoundFlower](https://soundflower.fr.softonic.com/mac) with Mac.
+
+Open the application `Audio and MIDI configuration` in the Application > Utilitaires folder.
 
 ![screen de Config audio et MIDI](./images/screen1.png)
 
-Une fois dans l'application, faire `Créer un périphérique à sortie multiple`.
+In the app, click on `Create a multiple output`.
 
 ![screen de Config audio et MIDI](./images/screen2.png)
 
-Cocher "Soundflower (2ch)".
+Check "Soundflower (2ch)".
 
 ![screen de Config audio et MIDI](./images/screen3.png)
 
-Dans TouchDesigner, créer un `Audio Device In` et sélectionner "Soundflower(2ch)" comme Device.
+In TouchDesigner, create an `Audio Device In` CHOP and select "Soundflower(2ch)" as Device.
 
 ![screen de Config audio et MIDI](./images/screen4.png)
 
-Créer un `Audio Device Out` en sortie, et sélectionner "Built-In Output" comme Device, pour que le son sorte dans la sortie son de l'ordi.
+Create an `Audio Device Out` CHOP in output, and select "Built-In Output" as Device, so the sound goes out of the sound output of the coomputer.
 
 ![screen de Config audio et MIDI](./images/screen5.png)
 
-Le son de l'ordinateur sort donc dans SoundFlower, est récupéré par TouchDesigner depuis Soundflower, et sort de TouchDesigner dans la sortie son de l'ordinateur (mes écouteurs ou les hauts-parleurs de mon ordi) : son de l'ordi > SoundFlower > TouchDesigner > sortie son
+The sound from the computer goes in SoundFlower, then in TouchDesigner from SoundFlower, and then in the sound output (speakers or headphones) : sound > SoundFlower > TouchDesigner > sound output.
 
-Le mieux est de mettre le son à fond sur la source (Spotify, etc), et de le baisser ensuite dans l'`Audio Device Out`.
+The best way is to put the sound at the maximum on the source (Spotify, etc) and lower it after in the `Audio Device Out` CHOP.
 
-On pourrait cocher également "Sortie Intégrée" dans le périphérique à sortie multiple de l'appli Configuration audio et MIDI, pour que le son sorte à la fois dans SoundFlower et dans la sortie son, sans avoir à le sortir depuis TouchDesigner, en mode son de l'ordi > Soundflower > TouchDesigner + son de l'ordi > sortie son, mais comme TouchDesigner perd en FPS parfois, je veux que la musique que j'entend reste synchro à mon visuel même quand ça ralentis.
+We could also check "Built In Output" in the multiple output in the Audio and MIDI config app, so the sound output in SoundFlower and in the sound output froom the computer so it would go : sound > SoundFlower > TouchDesigner + sound > sound output.
+But as TouchDesigner sometimes looses FPS, I want the music to stay synchro with my visual even when it slows down.
 
- ### Câble audio virtuel sous windows
+ ### Virtual audio cable in windows
 
- Jsp encore.
+Not sure.
 
- ## Son en visuel
+ ## Sound to visual
 
- Y'a mille moyens de faire des visuels générés avec du son. Perso ma pref en ce moment c'est de sortir le spectre des fréquences.
+ There is a thousand ways to generate visuals with sound. My favorite way at the moment it to do it with the frequencies spectrum.
 
- Donc en sortie du `Audio Device In`, mettre un `Audio Spectrum` qui sort dans un TOP `Chop to`.
+So after the `Audio Device In` CHOP, link an `Audio Spectrum` CHOP outputting in a `Chop to` TOP.
 
  ![screen de Touch](./images/screen6.png)
 
- On peux régler des trucs dans les paramètres de l'`Audio Spectrum`, pour booster les fréquences hautes par exemples, ou mettre des CHOP de réglages audio avant, mais je ne le fais pas.
+We can play with the parameters in the `Audio Spectrum`, to boost high frequencies for example, or add audio parameters CHOPs before, but I don't do it.
 
- Dans le `Chop to`, choisir "RG" comme Data Format. Les deux channels de gauche et droite deviennent donc les valeurs de rouge (R) et de vert (G).
+In the `Chop to` TOP, choose "RG" as Data Format. 
+The two channels from left and right become red and green values.
 
- On a donc une bande de couleurs et de noir de 1 pixel de haut, où les bandes de fréquences apparaissent en rouge ou en vert en fonction de la stéréo, ou en jaune par synthèse additive. L'intensité de la couleur dépend donc de le hauteur de la bande de fréquence sur le spectre.
+So we have a strip of 1 pixel where the frequencies appear in red or green depending of the stereo pan, or in yellow by additive mixing.
+The intensity of the color depends of the height of the strip on the frequency on the spectrum.
 
- Pour transformer cette bande de couleurs en image, on crée un TOP `Constant` sur fond noir, auquel on donne une résolution de 1080*1920.
+To transform this strip of colors in an full-sized image, we create a `Constant` TOP with a black background, and we give it a resolution of 1080*1920.
 
- On met un `Composite` en sortie du `Constant`, et on ajoute le `CHOP to` au `Composite`.
+We create a `Composite` TOP in output of the `Constant` TOP, and we add the `CHOP to` TOP to the `Composite`.
 
  ![screen de Touch](./images/screen7.png)
 
- On a ainsi une image de base avec les fréquences en couleurs en fonction de la stéréo, que l'on peux ensuite continuer à travailler.
+We therefore have a full-sized image wih the frequencies in colors depending of the stereo, that we can then modify and improve.
+
  ![screen de Touch](./images/gif1.gif)
- *Le piano de l'intro de "Tout Le Monde" de Neniu*
+ *The piano part in the intro of "Tout Le Monde" of Neniu*
 
  ![screen de Touch](./images/gif2.gif)
- *Le début de "I'm Not In Love" de 10cc, où on voit la basse en jaune qui revient à gauche*
+ *The beginning of "I'm Not In Love" of 10cc, where we see the bass in yellow on the left.*
 
  ![screen de Touch](./images/gif3.gif)
- *Le moment où le son est spatialisé et passe d'un coté à l'autre dans "Ridin" de Cordon; où on voit bien les fréquences devenir vertes puis rouges puis vertes*
+ *The moment where the sound is moving in the stereo panning in "Ridin" of Cordon, where we can see the frequencies going from green to red to green.*
