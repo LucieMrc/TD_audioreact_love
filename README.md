@@ -1,5 +1,7 @@
 # TD_audioreact_love
 
+*[english version](https://github.com/LucieMrc/TD_audioreact_love_EN)*
+
 **Ou comment générer des visuels audio-réactifs sur TouchDesigner pour faire des dingz.**
 
 Inspiré des tutoriels de [Bileam Tschepe](https://www.youtube.com/@elekktronaut) et [PPPANIK](https://www.youtube.com/@pppanik2040).
@@ -72,3 +74,11 @@ On pourrait cocher également "Sortie Intégrée" dans le périphérique à sort
 
  ![screen de Touch](./images/gif3.gif)
  *Le moment où le son est spatialisé et passe d'un coté à l'autre dans "Ridin" de Cordon; où on voit bien les fréquences devenir vertes puis rouges puis vertes*
+
+
+
+## Pour aller + loin
+
+- Le [tuto introduction à Touchdesigner](https://github.com/LucieMrc/IntroTD) (EN).
+
+- Le tuto [Feedback loop in TD](https://github.com/LucieMrc/TD_feedback_love_EN) (EN).
