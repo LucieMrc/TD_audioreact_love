@@ -1,4 +1,4 @@
-# TD_audioreact_love
+# Touchdesigner Audioreact love (FR)
 
 *[english version](https://github.com/LucieMrc/TD_audioreact_love_EN)*
 
@@ -13,7 +13,7 @@ On peux soit ouvrir un fichier son avec un CHOP `Audio File In`, ou écouter le 
 Si on veux écouter du son depuis youtube ou spotify ou autre, il faut installer un logiciel permettant de faire un câble audio virtuel pour que le son sorte dans TouchDesigner au lieu de sortir dans les hauts-parleurs.
 
 ### Câble audio virtuel sous mac
-Perso, j'utilise [SoundFlower](https://soundflower.fr.softonic.com/mac) sur Mac.
+Perso, j'utilise [BlackHole](https://existential.audio/blackhole/) sur Mac.
 
 Ouvrir l'application `Configuration audio et MIDI`, qui se trouve dans le dossier Application > Utilitaires.
 
@@ -23,11 +23,11 @@ Une fois dans l'application, faire `Créer un périphérique à sortie multiple`
 
 ![screen de Config audio et MIDI](./images/screen2.png)
 
-Cocher "Soundflower (2ch)".
+Cocher "BlackHole (2ch)".
 
 ![screen de Config audio et MIDI](./images/screen3.png)
 
-Dans TouchDesigner, créer un `Audio Device In` et sélectionner "Soundflower(2ch)" comme Device.
+Dans TouchDesigner, créer un `Audio Device In` et sélectionner "BlackHole (2ch)" comme Device.
 
 ![screen de Config audio et MIDI](./images/screen4.png)
 
@@ -35,15 +35,18 @@ Créer un `Audio Device Out` en sortie, et sélectionner "Built-In Output" comme
 
 ![screen de Config audio et MIDI](./images/screen5.png)
 
-Le son de l'ordinateur sort donc dans SoundFlower, est récupéré par TouchDesigner depuis Soundflower, et sort de TouchDesigner dans la sortie son de l'ordinateur (mes écouteurs ou les hauts-parleurs de mon ordi) : son de l'ordi > SoundFlower > TouchDesigner > sortie son
+Le son de l'ordinateur sort donc dans BlackHole, est récupéré par TouchDesigner depuis BlackHole, et sort de TouchDesigner dans la sortie son de l'ordinateur (mes écouteurs ou les hauts-parleurs de mon ordi) : son de l'ordi > BlackHole > TouchDesigner > sortie son
 
 Le mieux est de mettre le son à fond sur la source (Spotify, etc), et de le baisser ensuite dans l'`Audio Device Out`.
 
-On pourrait cocher également "Sortie Intégrée" dans le périphérique à sortie multiple de l'appli Configuration audio et MIDI, pour que le son sorte à la fois dans SoundFlower et dans la sortie son, sans avoir à le sortir depuis TouchDesigner, en mode son de l'ordi > Soundflower > TouchDesigner + son de l'ordi > sortie son, mais comme TouchDesigner perd en FPS parfois, je veux que la musique que j'entend reste synchro à mon visuel même quand ça ralentis.
+On pourrait cocher également "Sortie Intégrée" dans le périphérique à sortie multiple de l'appli Configuration audio et MIDI, pour que le son sorte à la fois dans BlackHole et dans la sortie son, sans avoir à le sortir depuis TouchDesigner, en mode son de l'ordi > BlackHole > TouchDesigner + son de l'ordi > sortie son, mais comme TouchDesigner perd en FPS parfois, je veux que la musique que j'entend reste synchro à mon visuel même quand ça ralentis.
+
+![schema](./images/schema.png)
+
 
  ### Câble audio virtuel sous windows
 
- Jsp encore.
+Même principe mais avec [Virtual Audio Cable](https://vb-audio.com/Cable/), Elekktronaut en a fait une vidéo récemment : ["Internal Audio to TouchDesigner"](https://www.elekktronaut.com/tutorials/internal-audio-to-touchdesigner).
 
  ## Son en visuel
 
