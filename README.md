@@ -12,7 +12,37 @@ On peux soit ouvrir un fichier son avec un CHOP `Audio File In`, ou écouter le 
 
 Si on veux écouter du son depuis youtube ou spotify ou autre, il faut installer un logiciel permettant de faire un câble audio virtuel pour que le son sorte dans TouchDesigner au lieu de sortir dans les hauts-parleurs.
 
-### Câble audio virtuel sous mac
+## Son en visuel
+
+ Y'a mille moyens de faire des visuels générés avec du son. Perso ma pref en ce moment c'est de sortir le spectre des fréquences.
+
+ Donc en sortie du `Audio Device In`, mettre un `Audio Spectrum` qui sort dans un TOP `Chop to`.
+
+ ![screen de Touch](./images/screen6.png)
+
+ On peux régler des trucs dans les paramètres de l'`Audio Spectrum`, pour booster les fréquences hautes par exemples, ou mettre des CHOP de réglages audio avant, mais je ne le fais pas.
+
+ Dans le `Chop to`, choisir "RG" comme Data Format. Les deux channels de gauche et droite deviennent donc les valeurs de rouge (R) et de vert (G).
+
+ On a donc une bande de couleurs et de noir de 1 pixel de haut, où les bandes de fréquences apparaissent en rouge ou en vert en fonction de la stéréo, ou en jaune par synthèse additive. L'intensité de la couleur dépend donc de le hauteur de la bande de fréquence sur le spectre.
+
+ Pour transformer cette bande de couleurs en image, on crée un TOP `Constant` sur fond noir, auquel on donne une résolution de 1080*1920.
+
+ On met un `Composite` en sortie du `Constant`, et on ajoute le `CHOP to` au `Composite`.
+
+ ![screen de Touch](./images/screen7.png)
+
+ On a ainsi une image de base avec les fréquences en couleurs en fonction de la stéréo, que l'on peux ensuite continuer à travailler.
+ ![screen de Touch](./images/gif1.gif)
+ *Le piano de l'intro de "Tout Le Monde" de Neniu*
+
+ ![screen de Touch](./images/gif2.gif)
+ *Le début de "I'm Not In Love" de 10cc, où on voit la basse en jaune qui revient à gauche*
+
+ ![screen de Touch](./images/gif3.gif)
+ *Le moment où le son est spatialisé et passe d'un coté à l'autre dans "Ridin" de Cordon; où on voit bien les fréquences devenir vertes puis rouges puis vertes*
+
+## Câble audio virtuel sous mac
 Perso, j'utilise [BlackHole](https://existential.audio/blackhole/) sur Mac.
 
 Ouvrir l'application `Configuration audio et MIDI`, qui se trouve dans le dossier Application > Utilitaires.
@@ -43,45 +73,12 @@ On pourrait cocher également "Sortie Intégrée" dans le périphérique à sort
 
 ![schema](./images/schema.png)
 
-
- ### Câble audio virtuel sous windows
+## Câble audio virtuel sous windows
 
 Même principe mais avec [Virtual Audio Cable](https://vb-audio.com/Cable/), Elekktronaut en a fait une vidéo récemment : ["Internal Audio to TouchDesigner"](https://www.elekktronaut.com/tutorials/internal-audio-to-touchdesigner).
 
- ## Son en visuel
-
- Y'a mille moyens de faire des visuels générés avec du son. Perso ma pref en ce moment c'est de sortir le spectre des fréquences.
-
- Donc en sortie du `Audio Device In`, mettre un `Audio Spectrum` qui sort dans un TOP `Chop to`.
-
- ![screen de Touch](./images/screen6.png)
-
- On peux régler des trucs dans les paramètres de l'`Audio Spectrum`, pour booster les fréquences hautes par exemples, ou mettre des CHOP de réglages audio avant, mais je ne le fais pas.
-
- Dans le `Chop to`, choisir "RG" comme Data Format. Les deux channels de gauche et droite deviennent donc les valeurs de rouge (R) et de vert (G).
-
- On a donc une bande de couleurs et de noir de 1 pixel de haut, où les bandes de fréquences apparaissent en rouge ou en vert en fonction de la stéréo, ou en jaune par synthèse additive. L'intensité de la couleur dépend donc de le hauteur de la bande de fréquence sur le spectre.
-
- Pour transformer cette bande de couleurs en image, on crée un TOP `Constant` sur fond noir, auquel on donne une résolution de 1080*1920.
-
- On met un `Composite` en sortie du `Constant`, et on ajoute le `CHOP to` au `Composite`.
-
- ![screen de Touch](./images/screen7.png)
-
- On a ainsi une image de base avec les fréquences en couleurs en fonction de la stéréo, que l'on peux ensuite continuer à travailler.
- ![screen de Touch](./images/gif1.gif)
- *Le piano de l'intro de "Tout Le Monde" de Neniu*
-
- ![screen de Touch](./images/gif2.gif)
- *Le début de "I'm Not In Love" de 10cc, où on voit la basse en jaune qui revient à gauche*
-
- ![screen de Touch](./images/gif3.gif)
- *Le moment où le son est spatialisé et passe d'un coté à l'autre dans "Ridin" de Cordon; où on voit bien les fréquences devenir vertes puis rouges puis vertes*
-
-
-
 ## Pour aller + loin
 
-- Le [tuto introduction à Touchdesigner](https://github.com/LucieMrc/IntroTD) (EN).
+- Le [tuto introduction à Touchdesigner](https://github.com/LucieMrc/IntroTD_FR) (FR).
 
 - Le tuto [Feedback loop in TD](https://github.com/LucieMrc/TD_feedback_love_EN) (EN).
