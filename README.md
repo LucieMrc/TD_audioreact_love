@@ -4,19 +4,17 @@
 
 **Ou comment générer des visuels audio-réactifs sur TouchDesigner pour faire des dingz.**
 
-Inspiré des tutoriels de [Bileam Tschepe](https://www.youtube.com/@elekktronaut) et [PPPANIK](https://www.youtube.com/@pppanik2040).
-
 ## Setup audio-réactif
 
 On peux soit ouvrir un fichier son avec un CHOP `Audio File In`, ou écouter le son venant du micro de l'ordinateur avec `Audio Device In`.
 
 Si on veux écouter du son depuis youtube ou spotify ou autre, il faut installer un logiciel permettant de faire un câble audio virtuel pour que le son sorte dans TouchDesigner au lieu de sortir dans les hauts-parleurs.
 
-## Son en visuel
+## Spectre sonore en visuel
 
- Y'a mille moyens de faire des visuels générés avec du son. Perso ma pref en ce moment c'est de sortir le spectre des fréquences.
+Inspiré des tutoriels de [Bileam Tschepe](https://www.youtube.com/@elekktronaut) et [PPPANIK](https://www.youtube.com/@pppanik2040).
 
- Donc en sortie du `Audio Device In`, mettre un `Audio Spectrum` qui sort dans un TOP `Chop to`.
+En sortie du `Audio Device In`, mettre un `Audio Spectrum` qui sort dans un TOP `Chop to`.
 
  ![screen de Touch](./images/screen6.png)
 
@@ -41,6 +39,25 @@ Si on veux écouter du son depuis youtube ou spotify ou autre, il faut installer
 
  ![screen de Touch](./images/gif3.gif)
  *Le moment où le son est spatialisé et passe d'un coté à l'autre dans "Ridin" de Cordon; où on voit bien les fréquences devenir vertes puis rouges puis vertes*
+
+## Analyse audio dans Touchdesigner
+
+TouchDesigner a un node dédié à l'analyse audio, mais la qualité de l'analyse varie énormément en fonction des sons.
+
+ ![screen de Touch](./images/gif4.gif)
+*"Doudou" de Aya Nakamura* 
+
+Dans le dossier "Tools" de la Palette, on récupère le node `audioAnalysis`.
+![screen de Config audio et MIDI](./images/screen9.png)
+
+blablbla tous les paramètres
+![screen de Config audio et MIDI](./images/screen10.png)
+
+blabla les sorties
+![screen de Config audio et MIDI](./images/screen11.png)
+
+
+## Ajouter un contrôleur Midi en mode VJing
 
 ## Câble audio virtuel sous mac
 Perso, j'utilise [BlackHole](https://existential.audio/blackhole/) sur Mac.
